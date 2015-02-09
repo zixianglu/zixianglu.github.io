@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Delete Rows</title>
+<script src="js/d3.min.js" charset="utf-8"></script>
+<script>
+function Delete() 
+{
+	var arr = new Array();
+	for (var i = 0; i < row.length - 1; i++)
+	{
+		if(document.getElementById(i+"").checked == true)
+		{
+			arr.push(i);
+		}
+	}
+	window.returnValue = arr;
+	window.close();
+}
+</script>
+
+</head>
+<body>
+<div id="table">
+
+</div>
+<div>
+	<input id = "Submit" type="button" value = "Delete" name="Social" onclick = "Delete()"/>
+</div>
+<script type="text/javascript">
+var newrow = window.opener.rows.slice();
+
+row = new Array();
+
+for (var i = 0; i < newrow.length; i++) 
+{
+	var t = new Array();
+	for (var j = 0; j < 4; j++) 
+	{
+		t[j] = newrow[i][j];
+	}
+	row.push(t);
+}
+row[0][3] = "Y/N";
+//alert(row);
+
+var tbl = d3.select("#table")
+        .append("table")
+        .attr("id", "ntable")
+        .style("border-collapse", "collapse")
+        .style("border", "2px black solid");
+      
+    // headers
+    tbl.append("thead")
+    	  .append("tr")
+        .selectAll("th")
+        .data(row[0])
+        .enter()
+        .append("th")
+        .text(function(d) {return d;})
+        .style("border", "1px black solid")
+        .style("padding", "10px")
+        .on("mouseover", function(){d3.select(this).style("background-color", "red")}) 
+        .on("mouseout", function(){d3.select(this).style("background-color", "white")}) 
+        .style("font-size", "15px");
+
+    // data
+    tbl.append("tbody")
+        .selectAll("tr").data(row.slice(1))
+        .enter().append("tr")
+
+        .selectAll("td")
+        .data(function(d){return d;})
+        .enter()
+        .append("td")
+        .text(function(d){return d;})
+        .style("border", "1px black solid")
+        .on("mouseover", function(){d3.select(this).style("background-color", "aliceblue")}) 
+        .on("mouseout", function(){d3.select(this).style("background-color", "white")}) 
+        .style("font-size", "12px");
+        
+   var tbody = ntable.tBodies[0];
+   var trs = tbody.rows;
+   for ( var i = 0; i < trs.length; i++)
+   {
+   	var td = trs[i].cells[3];
+   	//alert(td);
+   	var text = document.createElement('input');
+   	text.type = 'checkbox';
+   	text.setAttribute("id", i+"");
+   	text.setAttribute("value", i+"");
+      td.removeChild(td.firstChild);
+      td.appendChild(text);
+
+    }
+
+</script>
+</body>
+</html>
