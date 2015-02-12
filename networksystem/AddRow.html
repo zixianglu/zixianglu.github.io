@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Add Row</title>
+<script type="text/javascript">
+function Change() 
+{
+
+	//window.opener.document.getElementById('1_1').value = 100;
+	//window.close();
+	//console.log(window.opener.document);
+	var row = window.opener.rows;
+	var len = row.length - 1;
+	alert(row.length);
+	// Get the No
+	var temp = document.getElementById('No').value;
+	//alert(temp);
+	if (!Number(temp) && Number(temp) != 0) 
+	{
+		alert("番号 type error");
+		document.getElementById('No').value = "";	
+		return ;
+	}
+	else 
+	{
+		window.opener.document.getElementById(len +'_0').value = temp;		
+	}
+		
+	// Get the name
+	temp = document.getElementById('Name').value;
+	if (temp.length > 0) 
+	{
+		window.opener.document.getElementById(len +'_1').value = temp;
+	}
+	else 
+	{
+		alert("The length of 氏名 is 0");	
+		return;	
+	}
+
+	// Get the grad
+	temp = document.getElementById('Grad').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("学年 type error");
+		document.getElementById('Grad').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 1 || Number(temp) > 4) 
+		{
+			alert("The arrange of the 学年 is error");
+			document.getElementById('Grad').value = "";
+			return;	
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_2').value = temp;
+		}
+	}
+	
+	// Get the Chinese
+	temp = document.getElementById('Chin').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("国語 type error");
+		document.getElementById('Chin').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 0 || Number(temp) > 100) 
+		{
+			alert("The arrange of the 国語 is error");
+			document.getElementById('Chin').value = "";
+			return;		
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_3').value = temp;		
+		}
+	}
+	
+	// Get the Math
+	temp = document.getElementById('Math').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("数学 type error");
+		document.getElementById('Math').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 0 || Number(temp) > 100) 
+		{
+			alert("The arrange of the 数学 is error");
+			document.getElementById('Math').value = "";
+			return;		
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_4').value = temp;			
+		}
+	}
+	
+	// Get the English
+	temp = document.getElementById('English').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("英語 type error");
+		document.getElementById('English').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 0 || Number(temp) > 100) 
+		{
+			alert("The arrange of the 英語 is error");
+			document.getElementById('English').value = "";
+			return;		
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_5').value = temp;
+		}
+	}
+
+	// Get the English
+	temp = document.getElementById('Engeer').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("理科 type error");
+		document.getElementById('Engeer').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 0 || Number(temp) > 100) 
+		{
+			alert("The arrange of the 理科 is error");
+			document.getElementById('Engeer').value = "";
+			return;		
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_6').value = temp;		
+		}
+	}
+	
+	// Get the Social
+	temp = document.getElementById('Social').value;
+	if (Number(temp) == NaN) 
+	{
+		alert("社会 type error");
+		document.getElementById('Social').value = "";
+		return;
+	}
+	else
+	{
+		if (Number(temp) < 0 || Number(temp) > 100) 
+		{
+			alert("The arrange of the 社会 is error");
+			document.getElementById('Social').value = "";
+			return;		
+		}
+		else 
+		{
+			window.opener.document.getElementById(len +'_7').value = temp;		
+		}
+	}
+	/*
+	var _min = Number(arr[3]);
+	var _max = Number(arr[3]);
+	for (var i = 3; i < 8; i++) 
+	{
+		if (_min > Number(arr[i)) 
+		{
+			_min = Number(arr[i]);
+		}
+		if (_max < Number(arr[i])) 
+		{
+			_max = Number(arr[i]);
+		}
+		
+		arr[8] += Number(arr[i]);		
+	}
+	arr[9] = _max;
+	arr[10] = _min;
+	
+	//window.opener.rows[row.length] = arr;
+	
+	//window.close();
+	*/
+	
+	window.returnValue = "ok";
+	
+	window.close();
+	
+}
+</script>
+
+</head>
+<body>
+	<div>
+		<table align="center" width="500px" height="600px">
+			<tr>
+				<td><label>番号: </label> </td>
+				<td><input id = "No" type="text" name="No"/> </td>
+			</tr>
+			<tr>
+				<td><label>氏名: </label></td>
+				<td><input id = "Name"type="text" name="Name"/></td>
+			</tr>
+			<tr>
+				<td><label>学年: </label></td>
+				<td><input id = "Grad" type="text" name="Grad"/></td>
+			</tr>	
+			<tr>
+				<td><label>国語: </label></td>
+				<td><input id = "Chin" type="text" name="Chin"/></td>
+			</tr>
+			<tr>
+				<td><label>数学: </label> </td>
+				<td><input id = "Math" type="text" name="Math"/></td>
+			</tr>
+			<tr>
+				<td><label>英語: </label></td>
+				<td><input id = "English" type="text" name="English"/></td>
+			</tr>
+			<tr>
+				<td><label>理科: </label></td>
+				<td><input id = "Engeer" type="text" name="Engeer"/></td>
+			</tr>
+			<tr>
+				<td><label>社会: </label></td>
+				<td><input id = "Social" type="text" name="Social"/></td>
+			</tr>
+			<tr>
+				
+				<td><input id = "Submit" type="button" value = "Submit" name="Social" onclick = "Change()"/></td>
+			</tr>	
+		
+		</table>		
+	</div>
+</body>
+</html>
